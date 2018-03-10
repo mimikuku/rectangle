@@ -22,14 +22,10 @@ pipeline {
   post {
     always {
       junit 'target/surefire-reports/*.xml'
-    }
-  }
-  
-  post {
-    always {
       archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
     }
   }
+  
   options {
     buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '1'))
   } 
